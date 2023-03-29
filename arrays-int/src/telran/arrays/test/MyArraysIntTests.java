@@ -1,8 +1,11 @@
 package telran.arrays.test;
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.Arrays;
+import static telran.arrays.MyArraysInt.*;
 import org.junit.jupiter.api.Test;
+
 import telran.arrays.MyArraysInt;
+
+import java.util.Arrays;
 
 class MyArraysIntTests {
 
@@ -12,8 +15,8 @@ class MyArraysIntTests {
 		int[]array1 = {1,2,3,4};
 		int[]expected = {1,2,3};
 		int[]expected1 = {1,2,3,4,-10};
-		assertArrayEquals(expected, MyArraysInt.addNumber(array, 3));
-		assertArrayEquals(expected1, MyArraysInt.addNumber(array1, -10));		
+		assertArrayEquals(expected, addNumber(array, 3));
+		assertArrayEquals(expected1, addNumber(array1, -10));		
 	}
 	
 	@Test
@@ -25,9 +28,9 @@ class MyArraysIntTests {
 		int[]expected1 = {1,2,3};
 		int[]expected2 = {1,2,3,4};
 		
-		assertArrayEquals(expected, MyArraysInt.removeNumber(array, 0));
-		assertArrayEquals(expected1, MyArraysInt.removeNumber(array1, 3));
-		assertArrayEquals(expected2, MyArraysInt.removeNumber(array2, -2));
+		assertArrayEquals(expected, removeNumber(array, 0));
+		assertArrayEquals(expected1, removeNumber(array1, 3));
+		assertArrayEquals(expected2, removeNumber(array2, -2));
 	}
 
 	@Test
@@ -42,10 +45,10 @@ class MyArraysIntTests {
 		int[]expected2 = {3,1,2};
 		int[]expected3 = {1,2,3};
   
-		assertArrayEquals(expected,  MyArraysInt.insertNumber(array, 3, 4));
-		assertArrayEquals(expected1, MyArraysInt.insertNumber(array1, 1,-2));
-		assertArrayEquals(expected2, MyArraysInt.insertNumber(array2, 0,3));
-		assertArrayEquals(expected3, MyArraysInt.insertNumber(array3, -1,3));
+		assertArrayEquals(expected,  insertNumber(array, 3, 4));
+		assertArrayEquals(expected1, insertNumber(array1, 1,-2));
+		assertArrayEquals(expected2, insertNumber(array2, 0,3));
+		assertArrayEquals(expected3, insertNumber(array3, -1,3));
 		
 	}
 	
@@ -67,12 +70,12 @@ class MyArraysIntTests {
 	int expected6 = 1;
 	int expected7 = 5;
 	
-	assertEquals(expected, Arrays.binarySearch(array, 3));
-	assertEquals(expected2, Arrays.binarySearch(array2, 15));
-	assertEquals(expected3, Arrays.binarySearch(array3, -10));
-	assertEquals(expected4, Arrays.binarySearch(array4, 0));
-	assertEquals(expected5, Arrays.binarySearch(array5, 12));
-	assertEquals(expected6, Arrays.binarySearch(array6, 10));
-	assertEquals(expected7, Arrays.binarySearch(array7, 10));
+	assertEquals(expected, binarySearch(array, 3));
+	assertEquals(expected2, binarySearch(array2, 15));
+	assertEquals(expected3, binarySearch(array3, -10));
+	assertEquals(expected4, binarySearch(array4, 0));
+	assertEquals(expected5, binarySearch(array5, 12));
+	assertEquals(expected6, binarySearch(array6, 10));
+	assertEquals(expected7,binarySearch(array7, 10));
 }
 }

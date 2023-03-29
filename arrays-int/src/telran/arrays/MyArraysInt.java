@@ -38,7 +38,7 @@ public class MyArraysInt {
 	}
 	public static int binarySearch(int [] a, int key) {
 		
-		Arrays.sort(a);
+		//Arrays.sort(a);
 		int result = Arrays.binarySearch(a,key);
 		return result;
 	}
