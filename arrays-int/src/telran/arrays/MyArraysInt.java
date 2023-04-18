@@ -18,7 +18,7 @@ public class MyArraysInt {
 		int arrayDest[] = new int[array.length - 1];
 		System.arraycopy(array, 0, arrayDest, 0, index);
 		System.arraycopy(array, index + 1, arrayDest, index, array.length - index - 1);
-		
+
 		return arrayDest;
 		}
 	}
@@ -32,7 +32,6 @@ public class MyArraysInt {
 		System.arraycopy(array, 0, arrayDest, 0, index);
 		arrayDest[index] = num;
 		System.arraycopy(array, index, arrayDest, index + 1, array.length - index);
-		
 		return arrayDest;
 		}
 	}
@@ -42,6 +41,12 @@ public class MyArraysInt {
 		int result = Arrays.binarySearch(a,key);
 		return result;
 	}
-
+	public static int[] insertNumberSorted(int[] array, int num) {
+	int index = Arrays.binarySearch(array, num);
+	if(index<0) {
+		index = -index-1; 
+	}
+	return insertNumber(array, index, num);
+	}
 }
 
