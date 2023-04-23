@@ -5,7 +5,6 @@ public class Person implements Comparable<Person>{
 	private long id;
 	private int age;
 	private String name;
-	
 	public Person(long id, int age, String name) {
 		this.id = id;
 		this.age = age;

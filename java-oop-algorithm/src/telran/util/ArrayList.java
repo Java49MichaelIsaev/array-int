@@ -2,6 +2,7 @@ package telran.util;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.function.Predicate;
 
 public class ArrayList<T> implements List<T> {
 	private static final int DEFAULT_CAPACITY = 16;
@@ -118,24 +119,81 @@ public class ArrayList<T> implements List<T> {
 		return res;
 	}
 
+	//@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	@Override
 	public void sort() {
-		Arrays.sort(array, 0, size);
-
+		sort((Comparator<T>)Comparator.naturalOrder());
+		
 	}
 
 	@Override
 	public void sort(Comparator<T> comp) {
-
-		T[] ar = toArray(array);
-		for (int i = 0; i < size - 1; i++)
-			for (int j = 0; j < size - i - 1; j++)
-				if ((comp.compare(array[j], array[j + 1])) > 0) {
-					T temp = (T) ar[j];
-					ar[j] = ar[j + 1];
-					ar[j + 1] = temp;
+		int n = size;
+		boolean flUnSort = true;
+		do {
+			flUnSort = false;
+			n--;
+			for(int i = 0; i < n; i++) {
+				if (comp.compare(array[i], array[i + 1]) > 0) {
+					swap(i);
+					flUnSort = true;
 				}
+			}
+		}while(flUnSort);
+		
+	}
 
+	private void swap(int i) {
+		T tmp = array[i];
+		array[i] = array[i + 1];
+		array[i + 1] = tmp;
+		
+	}
+
+	@Override
+	public int indexOf(Predicate<T> predicate) {
+		int res = -1;
+		int index = 0;
+		while (index < size && res == -1) {
+			if (predicate.test(array[index])) {
+				res = index;
+			}
+			index++;
+		}
+		return res;
+	}
+
+	@Override
+	public int lastIndexOf(Predicate<T> predicate) {
+		int res = -1;
+		int index = size - 1;
+		while (index >= 0 && res == -1) {
+			if (predicate.test(array[index])) {
+				res = index;
+			}
+			index--;
+		}
+		return res;
+	}
+
+	@Override
+	public boolean removeIf(Predicate<T> predicate) {
+		int oldSize = size;
+//		int i = 0;
+//		while(i < size) {
+//			if(predicate.test(array[i])) {
+//				remove(i);
+//			} else {
+//				i++;
+//			}
+//		}
+		for(int i = size - 1; i >= 0; i--) {
+			if(predicate.test(array[i])) {
+				remove(i);
+			} 
+		}
+		return oldSize > size;
 	}
 
 }
